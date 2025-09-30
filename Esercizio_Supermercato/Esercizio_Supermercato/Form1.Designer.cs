@@ -104,6 +104,7 @@
             btn_Paga.TabIndex = 5;
             btn_Paga.Text = "Paga Totale";
             btn_Paga.UseVisualStyleBackColor = false;
+            btn_Paga.Click += btn_Paga_Click;
             // 
             // Form1
             // 

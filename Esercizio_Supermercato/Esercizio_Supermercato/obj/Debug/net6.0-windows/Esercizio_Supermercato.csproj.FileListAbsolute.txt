@@ -39,3 +39,5 @@ C:\Users\biolo\Desktop\scol\4BII\informatica\Supermercato\Esercizio_Supermercato
 C:\Users\biolo\Desktop\scol\4BII\informatica\Supermercato\Esercizio_Supermercato\Esercizio_Supermercato\obj\Debug\net6.0-windows\Esercizio_Supermercato.pdb
 C:\Users\biolo\Desktop\scol\4BII\informatica\Supermercato\Esercizio_Supermercato\Esercizio_Supermercato\obj\Debug\net6.0-windows\Esercizio_Supermercato.genruntimeconfig.cache
 C:\Users\biolo\Desktop\scol\4BII\informatica\Supermercato\Esercizio_Supermercato\Esercizio_Supermercato\obj\Debug\net6.0-windows\ref\Esercizio_Supermercato.dll
+C:\Users\biolo\Desktop\scol\4BII\informatica\Supermercato\Esercizio_Supermercato\Esercizio_Supermercato\obj\Debug\net6.0-windows\Esercizio_Supermercato.FAcquisti.resources
+C:\Users\biolo\Desktop\scol\4BII\informatica\Supermercato\Esercizio_Supermercato\Esercizio_Supermercato\obj\Debug\net6.0-windows\Esercizio_Supermercato.FPaga.resources

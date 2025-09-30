@@ -15,7 +15,7 @@ namespace Esercizio_Supermercato
 {
     public partial class FStock : Form
     {
-        public List<CProdotto> Prodotti { get; private set; } = new List<CProdotto>();
+        public List<CProdotto> Prodotti { get; private set; } = new List<CProdotto>(); //Metto il get pubblico per poterlo  chiamare nello scontrino
 
         public FStock()
         {
@@ -27,34 +27,42 @@ namespace Esercizio_Supermercato
             ProdottiLoader();
             FillDgv();
             Styler();
+            ComboBoxLoader();
         }
 
         public void ProdottiLoader()
         {
             string nameJson = "stock.json";
             string directory = Application.StartupPath;
-            string path = Path.Combine(directory, nameJson); // Combino la directory al nome del file
+            string path = Path.Combine(directory, nameJson); //  ombino la directory al nome del file
 
-            string JsonContent = File.ReadAllText(path); // Legge tutto il contenuto del json
+            string JsonContent = File.ReadAllText(path); // legge tutto il contenuto del json
+
             if (JsonContent != null)
             {
                 try
                 {
-                    Prodotti = JsonConvert.DeserializeObject<List<CProdotto>>(JsonContent);
+                    Prodotti = JsonConvert.DeserializeObject<List<CProdotto>>(JsonContent); //deserializzo tutto come singoli CProdotto nella list Prodotti
+                    // deserializzare significa trasformare il testo del json in oggetti utilizzabili nel codice, in questo caso in CProdotto 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + "Json errore");
+                    MessageBox.Show(ex.Message + "Json errore"); //try catch in caso di errore nella deserializzzazione
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("Prodotti is already loaded");
             }
         }
 
+        public List<CProdotto> ReturnStock()
+        {
+            return Prodotti; // ritorno lo stock
+        }
         private void Styler()
         {
-            // Lista di tutti i tuoi DataGridView
+            // grafica
             var grids = new List<DataGridView> { dtg_Alimentari, dtg_Elettronica, dtg_Igiene, dtg_Vestiti };
 
             foreach (var dgv in grids)
@@ -85,24 +93,55 @@ namespace Esercizio_Supermercato
 
                 // Auto-sizing per riempire lo spazio
                 dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                dgv.ReadOnly = true;
             }
         }
 
+        private void ComboBoxLoader() // combobox per l'aggiunta allo stock
+        {
+            // pulisco la lista
+            box_Nome.Items.Clear();
+
+            if (Prodotti == null || Prodotti.Count == 0) // controllo che ci siano prodotti
+            {
+                box_Nome.Items.Add("Nessun prodotto disponibile");
+                box_Nome.SelectedIndex = 0;
+                box_Nome.Enabled = false;
+                return;
+            }
+
+            // aggiungo tutti i nomi
+            foreach (var p in Prodotti)
+            {
+                if (p != null)
+                {
+                    box_Nome.Items.Add(p.Nome);
+                }
+            }
+
+            // imposto al primo elemento sempre
+            if (box_Nome.Items.Count > 0)
+            {
+                box_Nome.SelectedIndex = 0;
+                box_Nome.Enabled = true;
+            }
+        }
 
         private void FillDgv()
         {
-            // cleaning
+            // cleaning dtg
             dtg_Alimentari.Rows.Clear();
             dtg_Elettronica.Rows.Clear();
             dtg_Igiene.Rows.Clear();
             dtg_Vestiti.Rows.Clear();
 
-            foreach ( var p in Prodotti)
+            foreach (var p in Prodotti)
             {
                 //controllo se e nullo
                 if (p != null)
                 {
-                    switch (p.Categoria)
+                    switch (p.Categoria) // divido per categoria la visuale dello stock
                     {
                         case "alimentari":
                             dtg_Alimentari.Rows.Add(p.Nome, p.Prezzo, p.Quantita);
@@ -118,12 +157,73 @@ namespace Esercizio_Supermercato
                             dtg_Igiene.Rows.Add(p.Nome, p.Prezzo, p.Quantita);
                             break;
                     }
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Prodotti è vuoto");
                     return;
                 }
             }
         }
+
+        private void btn_aggiungiProdotto_Click(object sender, EventArgs e)
+        {
+            // deve esserci almeno un nome selezionato
+            if (box_Nome.SelectedItem == null)
+            {
+                MessageBox.Show("Seleziona un prodotto dal menu.");
+                return;
+            }
+
+            string prodottoSelezionato = box_Nome.SelectedItem.ToString(); // ritorna il nome del combobox
+            int quantitaDaAggiungere = (int)num_Quantity.Value; //trasforma il numericupdown in int
+
+            if (quantitaDaAggiungere <= 0)
+            {
+                MessageBox.Show("Inserisci una quantità valida."); // quantita minima
+                return;
+            }
+
+            // cerco il prodotto nello stock
+            var prodotto = Prodotti.FirstOrDefault(p => p.Nome == prodottoSelezionato); //funzione lambda che con FirstOrDefault assegna o il primo elemento che rispetta
+                                                                                        // il parametro ( p.nome == prodottoSelezionato in questo caso scorre la lista 
+                                                                                        // dei prodotti sino a che non trova un pordotto con lo stesso nome) oppure ritorna
+                                                                                        // null, ovvero la parte Default
+            if (prodotto != null)
+            {
+                // ora che ho il prodotto ne modifico la quantita
+                prodotto.Quantita += quantitaDaAggiungere;
+
+                // salvo nel json
+                string nameJson = "stock.json";
+                string directory = Application.StartupPath;
+                string path = Path.Combine(directory, nameJson);
+
+                try
+                {
+                    string jsonAggiornato = JsonConvert.SerializeObject(Prodotti, Formatting.Indented); //serializzo ( Formatting.Intended crea la formattazione come
+                                                                                                        // spazi e caporiga
+
+                    File.WriteAllText(path, jsonAggiornato); //scrivo tutto nel file, se ha gia qualcosa lo scrivo se il file non ce lo crea
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Errore nel salvataggio dello stock: " + ex.Message); // in caso di errore di serializzazione
+                }
+
+                // aggiorna
+                FillDgv();
+
+                // aggiorna
+                ComboBoxLoader();
+                 
+                MessageBox.Show($"Aggiunti/o {quantitaDaAggiungere} elementi/o di {prodottoSelezionato}."); // debug
+            }  
+            else
+            {
+                MessageBox.Show("Prodotto non trovato nello stock.");
+            }
+        }
+
     }
 }

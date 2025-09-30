@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|c:\\users\\biolo\\desktop\\scol\\4bii\\informatica\\supermercato\\esercizio_supermercato\\esercizio_supermercato\\facquisti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\facquisti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|c:\\users\\biolo\\desktop\\scol\\4bii\\informatica\\supermercato\\esercizio_supermercato\\esercizio_supermercato\\facquisti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\facquisti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\esercizio_supermercato\\facquisti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\facquisti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|c:\\users\\biolo\\desktop\\scol\\4bii\\informatica\\supermercato\\esercizio_supermercato\\esercizio_supermercato\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,16 +19,24 @@
       "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\fstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\esercizio_supermercato\\fstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|c:\\users\\biolo\\desktop\\scol\\4bii\\informatica\\supermercato\\esercizio_supermercato\\esercizio_supermercato\\fstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\fstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|c:\\users\\biolo\\desktop\\scol\\4bii\\informatica\\supermercato\\esercizio_supermercato\\esercizio_supermercato\\fpaga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\fpaga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|c:\\users\\biolo\\desktop\\scol\\4bii\\informatica\\supermercato\\esercizio_supermercato\\esercizio_supermercato\\cprodotto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\cprodotto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\esercizio_supermercato\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|c:\\users\\biolo\\desktop\\scol\\4bii\\informatica\\supermercato\\esercizio_supermercato\\esercizio_supermercato\\cprodotto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\cprodotto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\esercizio_supermercato\\fpaga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62B62887-F1DA-458B-9B86-A74E6033A24D}|Esercizio_Supermercato\\Esercizio_Supermercato.csproj|solutionrelative:esercizio_supermercato\\fpaga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,21 +46,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FAcquisti.cs",
-              "DocumentMoniker": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FAcquisti.cs",
-              "RelativeDocumentMoniker": "Esercizio_Supermercato\\FAcquisti.cs",
-              "ToolTip": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FAcquisti.cs",
-              "RelativeToolTip": "Esercizio_Supermercato\\FAcquisti.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T16:44:13.624Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
@@ -63,7 +58,44 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FPaga.cs",
+              "DocumentMoniker": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FPaga.cs",
+              "RelativeDocumentMoniker": "Esercizio_Supermercato\\FPaga.cs",
+              "ToolTip": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FPaga.cs",
+              "RelativeToolTip": "Esercizio_Supermercato\\FPaga.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAiwEgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T08:15:50.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FPaga.cs [Progettazione]",
+              "DocumentMoniker": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FPaga.cs",
+              "RelativeDocumentMoniker": "Esercizio_Supermercato\\FPaga.cs",
+              "ToolTip": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FPaga.cs [Progettazione]",
+              "RelativeToolTip": "Esercizio_Supermercato\\FPaga.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T08:15:08.558Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FAcquisti.cs",
+              "DocumentMoniker": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FAcquisti.cs",
+              "RelativeDocumentMoniker": "Esercizio_Supermercato\\FAcquisti.cs",
+              "ToolTip": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FAcquisti.cs",
+              "RelativeToolTip": "Esercizio_Supermercato\\FAcquisti.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T16:44:13.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "FAcquisti.cs [Progettazione]",
               "DocumentMoniker": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FAcquisti.cs",
               "RelativeDocumentMoniker": "Esercizio_Supermercato\\FAcquisti.cs",
@@ -81,7 +113,7 @@
               "RelativeDocumentMoniker": "Esercizio_Supermercato\\Form1.cs",
               "ToolTip": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\Form1.cs",
               "RelativeToolTip": "Esercizio_Supermercato\\Form1.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAawBgAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAgwEUAAAB5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-29T16:38:42.838Z",
               "EditorCaption": ""
@@ -94,7 +126,7 @@
               "RelativeDocumentMoniker": "Esercizio_Supermercato\\FStock.cs",
               "ToolTip": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FStock.cs",
               "RelativeToolTip": "Esercizio_Supermercato\\FStock.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwNsAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-29T16:10:43.3Z",
               "EditorCaption": ""
@@ -108,11 +140,12 @@
               "ToolTip": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\FStock.cs [Progettazione]",
               "RelativeToolTip": "Esercizio_Supermercato\\FStock.cs [Progettazione]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T15:59:21.37Z"
+              "WhenOpened": "2025-09-29T15:59:21.37Z",
+              "EditorCaption": " [Progettazione]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Form1.cs [Progettazione]",
               "DocumentMoniker": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\Form1.cs",
               "RelativeDocumentMoniker": "Esercizio_Supermercato\\Form1.cs",
@@ -129,7 +162,7 @@
               "RelativeDocumentMoniker": "Esercizio_Supermercato\\CProdotto.cs",
               "ToolTip": "C:\\Users\\biolo\\Desktop\\scol\\4BII\\informatica\\Supermercato\\Esercizio_Supermercato\\Esercizio_Supermercato\\CProdotto.cs",
               "RelativeToolTip": "Esercizio_Supermercato\\CProdotto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-29T15:59:07.604Z"
             }
