@@ -7,60 +7,60 @@ namespace Esercizio_Supermercato
 {
     public partial class FAcquisti : Form
     {
-        private List<CProdotto> prodottiDisponibili;  // Stock originale
-        private List<CProdotto> carrello;             // Lista passata dal Form principale
+        private List<CProdotto> prodottiDisponibili;  // stock
+        private List<CProdotto> carrello;             // carrello
 
         public FAcquisti(List<CProdotto> prodotti, List<CProdotto> carrelloEsistente)
         {
             InitializeComponent();
-            prodottiDisponibili = prodotti;
-            carrello = carrelloEsistente; // non ricreare la lista!
+            prodottiDisponibili = prodotti; // prodotti disponibili in stock
+            carrello = carrelloEsistente; // carrello = carrello del main form ( se esiste gia quello esistente altrimenti nuovo )
         }
 
         private void FAcquisti_Load(object sender, EventArgs e)
         {
-            cmbbox_Prodotto.DataSource = prodottiDisponibili;
-            cmbbox_Prodotto.DisplayMember = "Nome";
-            numeric_Quantita.Minimum = 1;
+            cmbbox_Prodotto.DataSource = prodottiDisponibili; // datasource prende tutti gli elementi della lista
+            cmbbox_Prodotto.DisplayMember = "Nome"; // displaymember filtra per la proprieta ( nome )
+            numeric_Quantita.Minimum = 1; // setto 1 come minimo del numericupdown
 
-            AggiornaCarrello(); // mostra subito eventuali prodotti già nel carrello
-            AggiornaListaSpesa();
+            AggiornaUICarrello(); // mostra subito eventuali prodotti già nel carrello
         }
 
         private void cmbbox_Prodotto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selezionato = (CProdotto)cmbbox_Prodotto.SelectedItem;
+            var selezionato = (CProdotto)cmbbox_Prodotto.SelectedItem; // casto a CProdotto l'elemento selezionato
             if (selezionato != null)
             {
-                lbl_Prezzo.Text = $"Prezzo unitario: {selezionato.Prezzo:C}";
-                numeric_Quantita.Maximum = selezionato.Quantita > 0 ? selezionato.Quantita : 1;
-                numeric_Quantita.Value = 1;
+                lbl_Prezzo.Text = $"Prezzo unitario: {selezionato.Prezzo:C}"; // prendo il prezzo dalla prorpieta del CProdotto
+                numeric_Quantita.Maximum = selezionato.Quantita > 0 ? selezionato.Quantita : 1; // uso un op tern per vedere se il prodotto una quantita, 
+                                                                                                // se la ha imposto il valore massimo del numeric updown 
+                                                                                                // altrimenti metto 0
+                numeric_Quantita.Value = 1; // valore defauklt
             }
         }
 
         private void btn_AggiungiProdotto_Click(object sender, EventArgs e)
         {
-            var selezionato = (CProdotto)cmbbox_Prodotto.SelectedItem;
-            int quantitaDaAggiungere = (int)numeric_Quantita.Value;
+            var selezionato = (CProdotto)cmbbox_Prodotto.SelectedItem; // prendo il CProdotto allo stesso modo
+            int quantitaDaAggiungere = (int)numeric_Quantita.Value; // casto a int la quantia
 
-            if (selezionato == null) return;
+            if (selezionato == null) return; // ritorno se no selezionato
 
-            if (quantitaDaAggiungere <= 0 || selezionato.Quantita < quantitaDaAggiungere)
+            if (quantitaDaAggiungere <= 0 || selezionato.Quantita < quantitaDaAggiungere) //controllo che la quantita stia nel massimo e minimo ( max = stock min = 0)
             {
                 MessageBox.Show("Quantità non disponibile.");
                 return;
             }
 
-            // Cerca se il prodotto è già nel carrello
+            // se il prodotto e gia nel carrello
             var esistente = carrello.FirstOrDefault(p => p.Nome == selezionato.Nome);
             if (esistente != null)
             {
-                // Aggiungi quantità
-                esistente.Quantita += quantitaDaAggiungere;
+                esistente.Quantita += quantitaDaAggiungere; // modifico solo la quantita
             }
             else
             {
-                // Nuovo prodotto per il carrello
+                // creo un nuovo prodotot
                 carrello.Add(new CProdotto
                 {
                     Nome = selezionato.Nome,
@@ -70,73 +70,60 @@ namespace Esercizio_Supermercato
                 });
             }
 
-            // Aggiorna stock disponibile
+            // aggiorno lo stock ( NON IL JSON PERCHE L'UTENTE DEVE ANCORA PAGARE MA LO STOCK "ATTUALE" IN MODO DA NON ANDARE OLTRE I LIMITI )
             selezionato.Quantita -= quantitaDaAggiungere;
             numeric_Quantita.Maximum = selezionato.Quantita;
 
-            AggiornaCarrello();
+            AggiornaUICarrello(); // aggiorno il carelo e la lista
         }
 
         private void btn_RemoveProduct_Click(object sender, EventArgs e)
         {
-            int indiceSelezionato = listbox_ListaSpesa.SelectedIndex;
+            int indiceSelezionato = listbox_ListaSpesa.SelectedIndex; //indice delezionato
             if (indiceSelezionato < 0) return;
 
-            var selezionato = carrello[indiceSelezionato];
+            var selezionato = carrello[indiceSelezionato]; // prendo l'elemento in base all'indice
 
-            // Ripristina quantità nello stock originale
+            // ripristino la quantiat dello stock originale (sempre dello stock "attuale")
             var originale = prodottiDisponibili.FirstOrDefault(p => p.Nome == selezionato.Nome);
             if (originale != null)
             {
                 originale.Quantita += selezionato.Quantita;
             }
 
-            carrello.RemoveAt(indiceSelezionato);
+            carrello.RemoveAt(indiceSelezionato); // rimuove l'elemento all'indice selezionato
 
-            AggiornaCarrello();
-            AggiornaListaSpesa();
+            AggiornaUICarrello(); // aggiorno il carelo e la lista
         }
 
-        private void AggiornaCarrello()
-        {
-            // Aggiorna visualizzazione listbox
-            listbox_ListaSpesa.DataSource = null;
-
-            var visualizzazione = carrello
-                .Select(p => $"{p.Nome} x{p.Quantita} - {p.Prezzo:C} ciascuno")
-                .ToList();
-
-            listbox_ListaSpesa.DataSource = visualizzazione;
-
-            // Calcola totale
-            decimal totale = carrello.Sum(p => p.Prezzo * p.Quantita);
-            lbl_Tot.Text = "Totale: " + totale.ToString("C");
-        }
-
-        // Metodo pubblico per restituire il carrello al Form principale (opzionale)
-        public List<CProdotto> GetCarrello()
-        {
-            return carrello;
-        }
-
-        private void AggiornaListaSpesa()
+        // Funzione unificata che aggiorna la ListBox e il totale
+        private void AggiornaUICarrello()
         {
             listbox_ListaSpesa.DataSource = null; // scollega DataSource
 
             if (carrello == null || carrello.Count == 0)
             {
                 listbox_ListaSpesa.Items.Clear();
-                listbox_ListaSpesa.Items.Add("Nessun elemento nel carrello");
+                listbox_ListaSpesa.Items.Add("Nessun elemento nel carrello"); // mostra messaggio se vuoto
+                lbl_Tot.Text = "Totale: €0,00"; // totale a 0
                 return;
             }
 
             // Crea una lista di stringhe da mostrare
             var visualizzazione = carrello
-                .Select(p => $"{p.Nome} x{p.Quantita} - {p.Prezzo:C} ciascuno")
-                .ToList();
+                .Select(p => $"{p.Nome} x{p.Quantita} - {p.Prezzo:C} ciascuno") // per ogni elemento lo creo con questa formattazione
+                .ToList(); // e lo trasformo in una lista di stringhe
 
-            listbox_ListaSpesa.DataSource = visualizzazione;
+            listbox_ListaSpesa.DataSource = visualizzazione; // uso la nuova datasource per popolare la lista
+
+            // calcolo il totale
+            decimal totale = carrello.Sum(p => p.Prezzo * p.Quantita); // sommo ogni prodotto moltiplicandolo per la sua quantita
+            lbl_Tot.Text = "Totale: " + totale.ToString("C"); // aggiorno label totale
         }
 
+        public List<CProdotto> GetCarrello()
+        {
+            return carrello; // restituisce il carrello
+        }
     }
 }

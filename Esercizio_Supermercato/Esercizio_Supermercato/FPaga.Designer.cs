@@ -38,7 +38,7 @@
             // 
             lst_Scontrino.FormattingEnabled = true;
             lst_Scontrino.ItemHeight = 20;
-            lst_Scontrino.Location = new Point(22, 57);
+            lst_Scontrino.Location = new Point(12, 83);
             lst_Scontrino.Name = "lst_Scontrino";
             lst_Scontrino.Size = new Size(374, 364);
             lst_Scontrino.TabIndex = 0;
@@ -46,26 +46,31 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(171, 9);
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(255, 128, 0);
+            label1.Location = new Point(12, 26);
             label1.Name = "label1";
-            label1.Size = new Size(82, 20);
+            label1.Size = new Size(256, 54);
             label1.TabIndex = 1;
-            label1.Text = "SCONTINO";
+            label1.Text = "SCONTRINO";
             // 
             // btn_Paga
             // 
-            btn_Paga.Location = new Point(402, 57);
+            btn_Paga.BackColor = Color.FromArgb(224, 224, 224);
+            btn_Paga.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Paga.ForeColor = Color.FromArgb(255, 128, 0);
+            btn_Paga.Location = new Point(402, 83);
             btn_Paga.Name = "btn_Paga";
             btn_Paga.Size = new Size(94, 59);
             btn_Paga.TabIndex = 2;
-            btn_Paga.Text = "Pagaa";
-            btn_Paga.UseVisualStyleBackColor = true;
+            btn_Paga.Text = "Paga";
+            btn_Paga.UseVisualStyleBackColor = false;
             btn_Paga.Click += btn_Paga_Click;
             // 
             // lbl_Totale
             // 
             lbl_Totale.AutoSize = true;
-            lbl_Totale.Location = new Point(402, 135);
+            lbl_Totale.Location = new Point(402, 155);
             lbl_Totale.Name = "lbl_Totale";
             lbl_Totale.Size = new Size(82, 20);
             lbl_Totale.TabIndex = 3;
@@ -75,7 +80,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 466);
             Controls.Add(lbl_Totale);
             Controls.Add(btn_Paga);
             Controls.Add(label1);
