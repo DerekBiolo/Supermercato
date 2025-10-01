@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Newtonsoft.Json; // Assicurati di avere Newtonsoft.Json via NuGet
+using Newtonsoft.Json;
+using System.Drawing.Printing;
+
 
 namespace Esercizio_Supermercato
 {
@@ -38,41 +40,42 @@ namespace Esercizio_Supermercato
 
         private void btn_Paga_Click(object sender, EventArgs e)
         {
-            // 1. Aggiorno lo stock sottraendo le quantità acquistate
+            //aggiiorno quantita dello stock
             foreach (var prodottoCarrello in carrelloProdotti)
             {
                 var prodottoStock = stockProdotti.FirstOrDefault(p => p.Nome == prodottoCarrello.Nome);
+
                 if (prodottoStock != null)
                 {
                     prodottoStock.Quantita -= prodottoCarrello.Quantita; // sottraggo quantità acquistata
-                    if (prodottoStock.Quantita < 0) // controllo quantità negativa
+
+                    if (prodottoStock.Quantita < 0)
+                    {
                         prodottoStock.Quantita = 0;
+                    }
                 }
             }
 
-            // 2. Salvo lo stock aggiornato sul file JSON
             SalvaStock(stockProdotti);
 
-            // 3. Creo e apro il dialog di stampa
+
             using (PrintDialog printerDialog = new PrintDialog())
             {
-                System.Drawing.Printing.PrintDocument printDoc = new System.Drawing.Printing.PrintDocument();
+                PrintDocument printDoc = new PrintDocument();
 
                 // gestisco la stampa pagina per pagina
                 printDoc.PrintPage += (s, ev) =>
                 {
-                    float yPos = 10; // posizione verticale iniziale
-                    int leftMargin = 10; // margine sinistro
-
-                    using (System.Drawing.Font font = new System.Drawing.Font("Consolas", 10))
+                    using (Font f = new Font("Consolas", 10))
                     {
-                        // stampo ogni riga della listbox
-                        foreach (string line in lst_Scontrino.Items)
+                        int rigaIndex = 0;
+                        foreach (string riga in lst_Scontrino.Items)
                         {
-                            ev.Graphics.DrawString(line, font, System.Drawing.Brushes.Black, leftMargin, yPos);
-                            yPos += font.GetHeight(ev.Graphics); // incremento la posizione verticale
+                            ev.Graphics.DrawString(riga, f, Brushes.Black, 0, rigaIndex * f.GetHeight(ev.Graphics));
+                            rigaIndex++;
                         }
                     }
+
                 };
 
                 printerDialog.Document = printDoc; // assegno il documento al dialog
@@ -82,7 +85,7 @@ namespace Esercizio_Supermercato
                 }
             }
 
-            // 4. Chiudo il form di pagamento
+            //chiudo ik form di pagamento
             this.Close();
         }
 
@@ -90,19 +93,13 @@ namespace Esercizio_Supermercato
         {
             try
             {
-                if (File.Exists(path)) // se il file esiste
-                {
-                    string json = File.ReadAllText(path); // leggo il contenuto
-                    return JsonConvert.DeserializeObject<List<CProdotto>>(json) ?? new List<CProdotto>(); // deserializzo in lista
-                }
-                else
-                {
-                    return new List<CProdotto>(); // ritorno lista vuota se il file non esiste
-                }
+                if (!File.Exists(path)) return new List<CProdotto>();
+                string json = File.ReadAllText(path);
+                return JsonConvert.DeserializeObject<List<CProdotto>>(json) ?? new List<CProdotto>();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Errore nel caricamento dello stock: " + ex.Message); // messaggio di errore
+                MessageBox.Show("Errore nel caricamento dello stock: " + ex.Message);
                 return new List<CProdotto>();
             }
         }
@@ -149,12 +146,10 @@ namespace Esercizio_Supermercato
                 "Totale".PadLeft(10)        // totale
             );
 
-            lst_Scontrino.Items.Add(new string('-', 45)); // linea separatrice
-
             foreach (var p in carrelloProdotti) // ciclo sui prodotti
             {
                 decimal totaleProdotto = p.Prezzo * p.Quantita; // calcolo totale per prodotto
-                string nomeProdotto = p.Nome.Length > 20 ? p.Nome.Substring(0, 20) : p.Nome; // taglio nome lungo
+                string nomeProdotto = p.Nome;
 
                 // aggiungo riga alla listbox
                 lst_Scontrino.Items.Add(
@@ -170,11 +165,13 @@ namespace Esercizio_Supermercato
             decimal sconto = affiliato ? totale * 0.05m : 0m; // calcolo sconto se affiliato
             decimal totaleScontato = totale - sconto; // totale finale
 
-            lst_Scontrino.Items.Add(new string('-', 45)); // linea separatrice
+            lst_Scontrino.Items.Add("-----------------------------------");
             if (affiliato) // se cliente affiliato
-                lst_Scontrino.Items.Add(string.Format("{0,-20} {1,24:F2}$", "Sconto 5%", sconto)); // linea sconto
-            lst_Scontrino.Items.Add(string.Format("{0,-20} {1,24:F2}$", "Totale da pagare", totaleScontato)); // linea totale
-            lst_Scontrino.Items.Add("============================="); // fine scontrino
+            {
+                lst_Scontrino.Items.Add("Sconto 5%".PadRight(20) + sconto.ToString("F2").PadLeft(24) + "$");
+            }
+            lst_Scontrino.Items.Add("Totale da pagare".PadRight(20) + totaleScontato.ToString("F2").PadLeft(24) + "$");
+            lst_Scontrino.Items.Add("-----------------------------------");
         }
     }
 }
