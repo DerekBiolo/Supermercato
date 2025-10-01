@@ -12,9 +12,7 @@ namespace Esercizio_Supermercato
         private bool affiliato; // indica se il cliente ha diritto allo sconto
         private List<CProdotto> carrelloProdotti; // lista dei prodotti nel carrello
         private List<CProdotto> stockProdotti;    // lista dello stock
-
-        // Percorso del file JSON
-        private readonly string path;
+        private string path;
 
         public FPaga(bool clienteAffiliato, List<CProdotto> carrello)
         {
@@ -32,11 +30,8 @@ namespace Esercizio_Supermercato
             stockProdotti = CaricaStock();
 
             // Mostro messaggio iniziale in base all'affiliazione
-            MessageBox.Show(affiliato
-                ? "Cliente affiliato: sconto del 5% applicato"
-                : "Cliente non affiliato: nessuno sconto applicato");
+            MessageBox.Show(affiliato ? "Cliente affiliato: sconto del 5% applicato" : "Cliente non affiliato: nessuno sconto applicato");
 
-            // Calcolo totale e preparo la listbox come scontrino
             CalcolaTotale(); // calcolo totale e sconto
             InizializzaLista(); // preparo lista scontrino
         }
@@ -91,9 +86,6 @@ namespace Esercizio_Supermercato
             this.Close();
         }
 
-        /// <summary>
-        /// Carica lo stock dal file JSON
-        /// </summary>
         private List<CProdotto> CaricaStock()
         {
             try
@@ -115,9 +107,6 @@ namespace Esercizio_Supermercato
             }
         }
 
-        /// <summary>
-        /// Salva lo stock sul file JSON
-        /// </summary>
         private void SalvaStock(List<CProdotto> stock)
         {
             try
@@ -130,10 +119,6 @@ namespace Esercizio_Supermercato
                 MessageBox.Show("Errore nel salvataggio dello stock: " + ex.Message); // messaggio di errore
             }
         }
-
-        /// <summary>
-        /// Calcola totale, sconto e aggiorna la label del totale
-        /// </summary>
         private void CalcolaTotale()
         {
             decimal totale = carrelloProdotti.Sum(p => p.Prezzo * p.Quantita); // somma prezzo*quantità per ogni prodotto
@@ -145,9 +130,6 @@ namespace Esercizio_Supermercato
                 : $"Totale: {totaleScontato:F2} $"; // testo se non affiliato
         }
 
-        /// <summary>
-        /// Inizializza la listbox come uno scontrino allineato
-        /// </summary>
         private void InizializzaLista()
         {
             lst_Scontrino.Items.Clear(); // pulisco listbox
@@ -158,8 +140,15 @@ namespace Esercizio_Supermercato
                 return;
             }
 
-            lst_Scontrino.Items.Add("======== SCONTRINO ========"); // intestazione
-            lst_Scontrino.Items.Add(string.Format("{0,-20} {1,3} {2,8} {3,10}", "Prodotto", "Qty", "Prezzo", "Totale")); // intestazione colonne
+            lst_Scontrino.Items.Add("SCONTRINO"); // intestazione
+
+            lst_Scontrino.Items.Add(
+                "Prodotto".PadRight(20) +   // nome colonna
+                "Qty".PadLeft(3) + " " +    // quantità
+                "Prezzo".PadLeft(8) + " " + // prezzo
+                "Totale".PadLeft(10)        // totale
+            );
+
             lst_Scontrino.Items.Add(new string('-', 45)); // linea separatrice
 
             foreach (var p in carrelloProdotti) // ciclo sui prodotti
@@ -168,11 +157,13 @@ namespace Esercizio_Supermercato
                 string nomeProdotto = p.Nome.Length > 20 ? p.Nome.Substring(0, 20) : p.Nome; // taglio nome lungo
 
                 // aggiungo riga alla listbox
-                lst_Scontrino.Items.Add(string.Format("{0,-20} {1,3} {2,8:F2}$ {3,10:F2}$",
-                    nomeProdotto,      // nome prodotto
-                    p.Quantita,        // quantità
-                    p.Prezzo,          // prezzo unitario
-                    totaleProdotto));  // totale prodotto
+                lst_Scontrino.Items.Add(
+                    nomeProdotto.PadRight(20) +                  // nome prodotto
+                    p.Quantita.ToString().PadLeft(3) + " " +     // quantità
+                    p.Prezzo.ToString("F2").PadLeft(8) + "$ " +  // prezzo unitario
+                    totaleProdotto.ToString("F2").PadLeft(10) + "$" // totale prodotto
+                );
+
             }
 
             decimal totale = carrelloProdotti.Sum(p => p.Prezzo * p.Quantita); // sommo tutto
